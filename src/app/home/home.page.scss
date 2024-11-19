@@ -1,0 +1,43 @@
+/* Adicione ao seu arquivo SCSS ou CSS */
+
+ion-grid {
+  padding: 16px;
+}
+
+.welcome-section {
+  text-align: center;
+  margin: 16px 0;
+}
+
+ion-card {
+  max-width: 250px; /* Mantém os cards menores */
+  margin: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+ion-img {
+  height: 180px; /* Define uma altura padrão */
+  object-fit: contain; /* Exibe a imagem inteira */
+  background-color: #f9f9f9; /* Fundo neutro para imagens menores */
+  border-radius: 12px 12px 0 0; /* Bordas arredondadas no topo */
+}
+
+ion-card-header {
+  padding: 8px;
+}
+
+ion-card-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+ion-card-content {
+  font-size: 0.9rem;
+  text-align: justify;
+}
+
+ion-button {
+  margin-top: 8px;
+}

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{produto.title}}</ion-title>
+    <app-carrinho-icon></app-carrinho-icon>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="produto; else loading">
+  <ion-card>
+    <ion-img [src]="produto.image" alt="{{ produto.title }}"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ produto.title }}</ion-card-title>
+      <p><s>{{ produto.price | currency:'BRL':'symbol':'1.0-2' }}</s></p>
+      <p>{{ produto.price | desconto: 10 }}</p> 
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ produto.description }}</p>
+    </ion-card-content>
+    <ion-button expand="block" (click)="addToCarrinho()">Adicionar ao Carrinho</ion-button>
+  </ion-card>
+</ion-content>
+
+<ng-template #loading>
+  <ion-spinner name="dots"></ion-spinner>
+</ng-template>
+

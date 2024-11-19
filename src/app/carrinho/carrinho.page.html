@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Carrinho</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let produto of carrinhoProdutos; let i = index">
+      <!-- Imagem do Produto -->
+      <ion-thumbnail slot="start">
+        <img [src]="produto.image" alt="{{ produto.title }}">
+      </ion-thumbnail>
+
+      <!-- Detalhes do Produto -->
+      <ion-label>
+        <h2>{{ produto.title }}</h2>
+        <p>Preço Original: {{ produto.price | currency: 'BRL' }}</p>
+        <p>Com Desconto: {{ produto.price | desconto: descontoPercentual }}</p>
+      </ion-label>
+
+      <!-- Botão de Remoção -->
+      <ion-button color="danger" (click)="removerProduto(i)">Remover</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Rodapé com Total e Botão -->
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Total: {{ totalComDesconto | currency: 'BRL' }}</ion-title>
+    </ion-toolbar>
+    <ion-button
+      expand="block"
+      color="success"
+      [disabled]="carrinhoProdutos.length === 0"
+      [routerLink]="['/checkout']"
+    >
+      Finalizar Compra
+    </ion-button>
+  </ion-footer>
+</ion-content>

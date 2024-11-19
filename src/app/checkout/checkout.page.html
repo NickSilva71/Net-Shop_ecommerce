@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Checkout</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/carrinho"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let produto of carrinhoProdutos">
+      <!-- Imagem do Produto -->
+      <ion-thumbnail slot="start">
+        <img [src]="produto.image" alt="{{ produto.title }}">
+      </ion-thumbnail>
+
+      <!-- Detalhes do Produto -->
+      <ion-label>
+        <h2>{{ produto.title }}</h2>
+        <p>Com Desconto: {{ produto.price | desconto: descontoPercentual }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Rodapé com Total e Botão -->
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Total: {{ totalComDesconto | currency: 'BRL' }}</ion-title>
+    </ion-toolbar>
+    <ion-button expand="block" color="success" (click)="finalizarCompra()">
+      Confirmar Compra
+    </ion-button>
+  </ion-footer>
+
+  <!-- Mensagem de Sucesso -->
+  <ng-template #compraRealizada>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Compra realizada com sucesso!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Obrigado por comprar conosco. Você será redirecionado para a página inicial em instantes.</p>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>
