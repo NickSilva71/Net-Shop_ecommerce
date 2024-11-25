@@ -1,43 +1,99 @@
-/* Adicione ao seu arquivo SCSS ou CSS */
-
-ion-grid {
-  padding: 16px;
+ion-header {
+  position: absolute;
 }
-
 .welcome-section {
+  padding: 5px;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
-  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ion-text-color);
+  background: linear-gradient(
+    var(--ion-color-primary),
+    var(--ion-color-secundary),
+    250%,
+    var(--ion-background-color)
+  );
+  h1 {
+    font-family: var(--ion-font-title);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
 }
 
-ion-card {
-  max-width: 250px; /* Mantém os cards menores */
-  margin: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  text-align: center;
+.category-name {
+  margin-top: 24px;
+  ion-title {
+    font-family: var(--ion-font-title);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ion-text-color);
+  }
 }
 
-ion-img {
-  height: 180px; /* Define uma altura padrão */
-  object-fit: contain; /* Exibe a imagem inteira */
-  background-color: #f9f9f9; /* Fundo neutro para imagens menores */
-  border-radius: 12px 12px 0 0; /* Bordas arredondadas no topo */
+// Container para rolagem horizontal
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+
+  // Esconder scroll em celular
+  @media (max-width: 768px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-ion-card-header {
-  padding: 8px;
-}
+// Cards
+.list-of-cards {
+  flex: 0 0 auto;
 
-ion-card-title {
-  font-size: 1rem;
-  font-weight: bold;
-}
+  ion-card {
+    --background: linear-gradient(
+      var(--ion-color-tertiary),
+      20%,
+      var(--ion-background-color)
+    );
+    width: 220px;
+    border-radius: 10px;
 
-ion-card-content {
-  font-size: 0.9rem;
-  text-align: justify;
-}
+    ion-img {
+      margin: 10px 10px 0 10px;
+      padding: 10px;
+      height: 180px;
+      background: #fff;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-ion-button {
-  margin-top: 8px;
+    ion-card-title {
+      --color: var(--card-text-color);
+      font-size: 1.25rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    ion-card-subtitle {
+      --color: var(--card-text-color);
+      font-size: 1.25rem;
+      display: flex;
+      flex-direction: column;
+
+      s {
+        font-size: 0.8em;
+        color: var(--card-subtitle-color);
+      }
+    }
+  }
 }

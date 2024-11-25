@@ -1,29 +1,50 @@
-<ion-header>
+<ion-header mode="ios" [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{produto.title}}</ion-title>
-    <app-carrinho-icon></app-carrinho-icon>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-back-button text="" defaultHref="/home" />
+      </ion-button>
+      <ion-button [routerLink]="['/']">
+        <ion-icon slot="icon-only" name="menu-outline" />
+      </ion-button>
     </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/carrinho']">
+        <ion-icon slot="icon-only" name="cart-outline" />
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>NET SHOP</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="produto; else loading">
-  <ion-card>
+  <ion-breadcrumbs>
+    <ion-breadcrumb [routerLink]="['/home']">Home</ion-breadcrumb>
+    <ion-breadcrumb [routerLink]="['/', produto.category]">{{ produto.category }}</ion-breadcrumb>
+    <ion-breadcrumb>{{ produto.title }}</ion-breadcrumb>
+  </ion-breadcrumbs>
+
+  <div class="product">
     <ion-img [src]="produto.image" alt="{{ produto.title }}"></ion-img>
-    <ion-card-header>
-      <ion-card-title>{{ produto.title }}</ion-card-title>
-      <p><s>{{ produto.price | currency:'BRL':'symbol':'1.0-2' }}</s></p>
-      <p>{{ produto.price | desconto: 10 }}</p> 
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ produto.description }}</p>
-    </ion-card-content>
-    <ion-button expand="block" (click)="addToCarrinho()">Adicionar ao Carrinho</ion-button>
-  </ion-card>
+
+    <div class="content">
+      <h1>{{ produto.title }}</h1>
+
+      <p class="price">
+        <s>{{ produto.price | currency:'BRL':'symbol':'1.0-2' }}</s>
+        {{ produto.price | desconto: 10 }}
+      </p>
+      <ion-button color="success" [routerLink]="['/carrinho']" class="add-to-cart" (click)="addToCarrinho()">Adicionar
+        ao Carrinho</ion-button>
+      <p class="description">{{ produto.description }}</p>
+    </div>
+
+  </div>
+
 </ion-content>
 
 <ng-template #loading>
   <ion-spinner name="dots"></ion-spinner>
 </ng-template>
-

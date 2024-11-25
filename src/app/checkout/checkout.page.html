@@ -1,9 +1,15 @@
-<ion-header>
+<ion-header mode="ios" [translucent]="true">
   <ion-toolbar>
-    <ion-title>Checkout</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/carrinho"></ion-back-button>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-back-button text="" defaultHref="/carrinho" />
+      </ion-button>
+      <ion-button [routerLink]="['/']">
+        <ion-icon slot="icon-only" name="menu-outline" />
+      </ion-button>
     </ion-buttons>
+
+    <ion-title>Checkout</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,17 +30,17 @@
   </ion-list>
 
   <!-- Rodapé com Total e Botão -->
-  <ion-footer>
+  <ion-footer mode="ios" translucent=true>
     <ion-toolbar>
       <ion-title>Total: {{ totalComDesconto | currency: 'BRL' }}</ion-title>
     </ion-toolbar>
-    <ion-button expand="block" color="success" (click)="finalizarCompra()">
+    <ion-button class="confirm-button" expand="block" color="success" (click)="finalizarCompra()">
       Confirmar Compra
     </ion-button>
   </ion-footer>
 
   <!-- Mensagem de Sucesso -->
-  <ng-template #compraRealizada>
+  <ng-template [ngIf]="compraFinalizada" #compraRealizada>
     <ion-card>
       <ion-card-header>
         <ion-card-title>Compra realizada com sucesso!</ion-card-title>
