@@ -1,43 +1,47 @@
-<ion-header>
+<ion-header mode="ios" [translucent]="true">
   <ion-toolbar>
-    <ion-title>Carrinho</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-back-button text="" defaultHref="/home" />
+      </ion-button>
+      <ion-button [routerLink]="['/']">
+        <ion-icon slot="icon-only" name="menu-outline" />
+      </ion-button>
     </ion-buttons>
+
+    <ion-title>Carrinho</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let produto of carrinhoProdutos; let i = index">
+    <ion-item class="confirmation-item" *ngFor="let produto of carrinhoProdutos; let i = index">
       <!-- Imagem do Produto -->
       <ion-thumbnail slot="start">
-        <img [src]="produto.image" alt="{{ produto.title }}">
+        <img [src]="produto.image" alt="Imagem de {{ produto.title }}">
       </ion-thumbnail>
 
       <!-- Detalhes do Produto -->
       <ion-label>
         <h2>{{ produto.title }}</h2>
-        <p>Preço Original: {{ produto.price | currency: 'BRL' }}</p>
+        <p>Preço Original: {{ produto.price | currency: 'BRL' }} - {{descontoPercentual | currency: 'BRL'}}</p>
         <p>Com Desconto: {{ produto.price | desconto: descontoPercentual }}</p>
       </ion-label>
 
       <!-- Botão de Remoção -->
-      <ion-button color="danger" (click)="removerProduto(i)">Remover</ion-button>
+      <ion-button shape="round" color="danger" (click)="removerProduto(i)">
+        <ion-icon name="trash-outline" />
+      </ion-button>
     </ion-item>
   </ion-list>
 
   <!-- Rodapé com Total e Botão -->
-  <ion-footer>
+  <ion-footer mode="ios" translucent=true>
     <ion-toolbar>
       <ion-title>Total: {{ totalComDesconto | currency: 'BRL' }}</ion-title>
     </ion-toolbar>
-    <ion-button
-      expand="block"
-      color="success"
-      [disabled]="carrinhoProdutos.length === 0"
-      [routerLink]="['/checkout']"
-    >
+    <ion-button class="confirm-button" expand="block" color="success" [disabled]="carrinhoProdutos.length === 0"
+      [routerLink]="['/checkout']">
       Finalizar Compra
     </ion-button>
   </ion-footer>

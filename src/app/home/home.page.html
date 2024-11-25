@@ -1,41 +1,47 @@
-<ion-header>
+<ion-header mode="ios" [translucent]="true">
   <ion-toolbar>
-    <ion-title>NET SHOP</ion-title>
-    <app-carrinho-icon></app-carrinho-icon>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/']">
+        <ion-icon slot="icon-only" name="menu-outline" />
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/carrinho']">
+        <ion-icon slot="icon-only" name="cart-outline" />
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-uppercase">NET SHOP</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="welcome-section">
     <ion-text>
-      <h1>Descubra os melhores produtos!</h1>
+      <h1 class="ion-text-uppercase">Descubra os melhores produtos!</h1>
       <p>Seu e-commerce favorito para encontrar de tudo, com facilidade e segurança.</p>
     </ion-text>
   </div>
 
-  <ion-grid>
-    <!-- Itera sobre as categorias -->
-    <div *ngFor="let category of groupedProducts | keyvalue">
-      <ion-row>
-        <ion-col size="12">
-          <ion-title>{{ category.key | titlecase }}</ion-title>
-        </ion-col>
-      </ion-row>
+  <!-- Itera o nome das categorias -->
+  <div class="category-name" *ngFor="let category of groupedProducts | keyvalue">
+    <ion-title mode="md">{{ category.key | titlecase }}</ion-title>
 
-      <!-- Exibe os produtos dentro da categoria -->
-      <ion-row>
-        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let produto of category.value">
-          <ion-card>
-            <ion-img [src]="produto.image" alt="{{ produto.title }}"></ion-img>
-            <ion-card-header>
-              <ion-card-title>{{ produto.title }}</ion-card-title>
-              <p><s>{{ produto.price | currency:'BRL' }}</s></p>
-              <p>{{ produto.price | desconto: 10 }}</p>
-            </ion-card-header>
-            <ion-button expand="block" [routerLink]="['/detalhes', produto.id]">Detalhes</ion-button>
-          </ion-card>
-        </ion-col>
-      </ion-row>
+    <!-- Exibe os produtos da categoria horizontalmente -->
+    <div class="horizontal-scroll">
+      <div class="list-of-cards" *ngFor="let produto of category.value">
+        <ion-card mode="md" button="true" [routerLink]="['/detalhes', produto.id]">
+          <ion-img [src]="produto.image" alt="imagem de {{ produto.title }}"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{ produto.title }}</ion-card-title>
+            <ion-card-subtitle>
+              <s>{{ produto.price | currency:'BRL' }}</s>
+              {{ produto.price | desconto: 10 }}
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </div>
     </div>
-  </ion-grid>
+  </div>
 </ion-content>

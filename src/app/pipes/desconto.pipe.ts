@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'desconto',
-})
+@Pipe({ name: 'desconto' })
 export class DescontoPipe implements PipeTransform {
   transform(preco: number, desconto: number): string {
     if (!preco || !desconto) {

@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
-import { DescontoPipe } from '../pipes/desconto.pipe'; 
-import { CarrinhoIconComponent } from '../components/carrinho-icon/carrinho-icon.component'; 
+import { DescontoPipe } from '../pipes/desconto.pipe';
 
 @NgModule({
   declarations: [
     DescontoPipe,
-    CarrinhoIconComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +14,6 @@ import { CarrinhoIconComponent } from '../components/carrinho-icon/carrinho-icon
   ],
   exports: [
     DescontoPipe,
-    CarrinhoIconComponent,
   ],
 })
 export class SharedModule {}

@@ -1,2 +1,50 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+/* Variáveis globais de temas */
+:root {
+  --ion-font-family: "Roboto", "Helvetica Neue", sans-serif;
+  --ion-font-title: "Montserrat", sans-serif;
+
+  --ion-color-primary: #5584AC;
+  --ion-color-primary-contrast: #E0FFFF;
+
+  --ion-color-secundary: #95D1CC;
+  --ion-color-secundary-contrast: #fff;
+
+  --ion-color-tertiary: #F6F2D4;
+  --ion-color-tertiary-contrast: #E6E6FA;
+
+  --ion-background-color: #f5f5f5;
+  --ion-text-color: #000;
+  --ion-text-color-contrast: #fff;
+  --ion-text-shadow: #888;
+
+  --ion-subtitle-color: #555;
+
+  /* Cores específicas */
+  --card-text-color: #000;
+  --card-subtitle-color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-color-primary: #9e2121;
+    --ion-color-primary-contrast: #5584AC;
+
+    --ion-color-secundary: #5a2b0f;
+    --ion-color-secundary-contrast: #000;
+
+    --ion-color-tertiary: #411212;
+    --ion-color-tertiary-contrast: #000;
+
+    --ion-text-color: #fff;
+    --ion-text-color-contrast: #000;
+
+    --ion-subtitle-color: #bbb;
+
+    /* Cores específicas */
+    --card-text-color: #fff;
+    --card-subtitle-color: #bbb;
+  }
+}
