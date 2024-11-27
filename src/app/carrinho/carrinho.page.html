@@ -24,7 +24,7 @@
       <!-- Detalhes do Produto -->
       <ion-label>
         <h2>{{ produto.title }}</h2>
-        <p>Preço Original: {{ produto.price | currency: 'BRL' }} - {{descontoPercentual | currency: 'BRL'}}</p>
+        <p>Preço Original: {{ produto.price | currency: 'BRL' }}</p>
         <p>Com Desconto: {{ produto.price | desconto: descontoPercentual }}</p>
       </ion-label>
 
@@ -40,7 +40,7 @@
     <ion-toolbar>
       <ion-title>Total: {{ totalComDesconto | currency: 'BRL' }}</ion-title>
     </ion-toolbar>
-    <ion-button class="confirm-button" expand="block" color="success" [disabled]="carrinhoProdutos.length === 0"
+    <ion-button class="confirm-button" expand="block" color="success" [appVazio]="carrinhoProdutos"
       [routerLink]="['/checkout']">
       Finalizar Compra
     </ion-button>

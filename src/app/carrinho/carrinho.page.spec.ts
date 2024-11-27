@@ -1,17 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CarrinhoPage } from './carrinho.page';
+import { Component, OnInit } from '@angular/core';
+import { CarrinhoService } from '../services/carrinho.service';
 
-describe('CarrinhoPage', () => {
-  let component: CarrinhoPage;
-  let fixture: ComponentFixture<CarrinhoPage>;
+@Component({
+  selector: 'app-carrinho',
+  templateUrl: './carrinho.page.html',
+  styleUrls: ['./carrinho.page.scss'],
+})
+export class CarrinhoPage implements OnInit {
+  carrinhoProdutos: any[] = []; // Lista de produtos no carrinho
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CarrinhoPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(private carrinhoService: CarrinhoService) {}
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit() {
+    // Subscrição para atualizar a lista sempre que houver mudanças
+    this.carrinhoService.getProdutosObservable().subscribe((produtos) => {
+      this.carrinhoProdutos = produtos;
+    });
+  }
+
+  removerProduto(index: number) {
+    this.carrinhoService.removeProduto(index);
+  }
+}

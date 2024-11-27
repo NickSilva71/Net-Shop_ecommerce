@@ -14,6 +14,7 @@ import { DescontoPipe } from '../pipes/desconto.pipe';
   ],
   exports: [
     DescontoPipe,
+  
   ],
 })
 export class SharedModule {}

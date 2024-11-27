@@ -4,7 +4,7 @@ import { Directive, HostBinding, Input, OnChanges } from '@angular/core';
   selector: '[appVazio]',  // Seletor da diretiva
 })
 export class VazioDirective implements OnChanges {
-  @Input('appVazio') lista: any[] = [];  // A variável 'lista' recebe os itens do carrinho
+  @Input('appVazio') lista: any[] = [];  //A variável 'lista' recebe os itens do carrinho
 
   @HostBinding('attr.disabled') isDisabled: boolean = false;  // Habilitar/desabilitar o botão
 
