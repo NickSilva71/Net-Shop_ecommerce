@@ -11,6 +11,7 @@ export class CarrinhoPage implements OnInit {
   descontoPercentual = 10; // Define o desconto aplicado
   totalComDesconto: number = 0;
 
+
   constructor(private carrinhoService: CarrinhoService) {}
 
   ngOnInit() {

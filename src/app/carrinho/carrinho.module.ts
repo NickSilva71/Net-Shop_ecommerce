@@ -8,7 +8,7 @@ import { CarrinhoPageRoutingModule } from './carrinho-routing.module';
 
 import { CarrinhoPage } from './carrinho.page';
 
-import { HighlightDirective } from '../directives/highlight.directive';
+
 import { VazioDirective } from '../directives/vazio.directive';
 import { SharedModule } from '../shared/shared.module';
 
@@ -20,6 +20,6 @@ import { SharedModule } from '../shared/shared.module';
     CarrinhoPageRoutingModule,
     SharedModule
   ],
-  declarations: [CarrinhoPage, HighlightDirective, VazioDirective]
+  declarations: [CarrinhoPage, VazioDirective]
 })
 export class CarrinhoPageModule {}

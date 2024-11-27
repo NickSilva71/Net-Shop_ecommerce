@@ -29,7 +29,7 @@
         <ion-card mode="md" button="true" [routerLink]="['/detalhes', produto.id]">
           <ion-img [src]="produto.image" alt="imagem de {{ produto.title }}"></ion-img>
           <ion-card-header>
-            <ion-card-title>{{ produto.title }}</ion-card-title>
+            <ion-card-title [appHighlight]="'#047d7d'">{{ produto.title }}</ion-card-title>
             <ion-card-subtitle>
               <s>{{ produto.price | currency:'BRL' }}</s>
               {{ produto.price | desconto: 10 }}
